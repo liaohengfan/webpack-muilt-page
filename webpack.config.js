@@ -4,6 +4,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 /*extract-text-webpack-plugin将你的样式提取到单独的css文件里，*/
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+// 清理 dist 文件夹
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const config = require('./config/config');
 let HTMLPlugins = [];
 // 入口文件集合
@@ -45,6 +47,7 @@ module.exports = {
             chunks: chunks, //提取哪些模块共有的部分
             minChunks: chunks.length // 提取至少全部模块共有的部分
         }),
+        new CleanWebpackPlugin(["dist"]),
         new ExtractTextPlugin('css/[name].css'), //单独使用link标签加载css并设置路径，相对于output配置中的publickPath
         ...HTMLPlugins,
         new webpack.optimize.UglifyJsPlugin({
