@@ -8,13 +8,13 @@ const config = require('./config/config');
 let HTMLPlugins = [];
 // 入口文件集合
 let Entries = {};
-
 // 生成多页面的集合
 config.entrys.forEach((page) => {
     let htmlPlugin = new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
         favicon: config.favicon, //favicon路径，通过webpack引入同时可以生成hash值
         filename: page.filename, //生成的html存放路径，相对于path
         template: page.template, //html模板路径
+        title:page.title,
         inject: true, //js插入的位置，true/'head'/'body'/false
         hash: true, //为静态资源生成hash值
         chunks: [config.commonname, page.name],//需要引入的chunk，不配置就会引入所有页面的资源
@@ -27,8 +27,6 @@ config.entrys.forEach((page) => {
     HTMLPlugins.push(htmlPlugin);
     Entries[page.name] = page.entry;
 });
-
-
 const chunks = Object.keys(Entries);
 module.exports = {
     entry: Entries,
