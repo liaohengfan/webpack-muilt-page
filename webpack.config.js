@@ -43,9 +43,9 @@ module.exports = {
             TWEEN: 'tween.js'
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: config.commonname, // 将公共模块提取，生成名为`vendors`的chunk
+            name: config.commonname, // 将公共模块提取，生成名为指定的chunk
             chunks: chunks, //提取哪些模块共有的部分
-            minChunks: chunks.length // 提取至少3个模块共有的部分
+            minChunks: chunks.length // 提取至少全部模块共有的部分
         }),
         new ExtractTextPlugin('css/[name].css'), //单独使用link标签加载css并设置路径，相对于output配置中的publickPath
         ...HTMLPlugins,
