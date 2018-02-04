@@ -1,8 +1,6 @@
 module.exports={
-    pages:[
-        'index',
-        'login'
-    ],
+    dev_host:"localhost",
+    dev_port:8090,
     favicon:'./src/images/favicon.ico',
     commonname:"vendors",
     entrys:[

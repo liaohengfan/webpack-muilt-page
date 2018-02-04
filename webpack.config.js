@@ -95,8 +95,8 @@ module.exports = {
     //webpack-dev-server
     devServer: {
         contentBase: './',
-        host: 'localhost',
-        port: 8090, //默认8080
+        host: config.dev_host,
+        port: config.dev_port, //默认8080
         inline: true //可以监控js变化
     }
 };
