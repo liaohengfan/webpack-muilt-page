@@ -10,14 +10,14 @@ let HTMLPlugins = [];
 let Entries = {};
 
 // 生成多页面的集合
-config.pages.forEach((page) => {
+config.entrys.forEach((page) => {
     let htmlPlugin = new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-        favicon: './src/images/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
-        filename: `./${page}/index.html`, //生成的html存放路径，相对于path
-        template: `./src/htmls/${page}.html`, //html模板路径
+        favicon: config.favicon, //favicon路径，通过webpack引入同时可以生成hash值
+        filename: page.filename, //生成的html存放路径，相对于path
+        template: page.template, //html模板路径
         inject: true, //js插入的位置，true/'head'/'body'/false
         hash: true, //为静态资源生成hash值
-        chunks: ['vendors', page],//需要引入的chunk，不配置就会引入所有页面的资源
+        chunks: [config.commonname, page.name],//需要引入的chunk，不配置就会引入所有页面的资源
         minify: { //压缩HTML文件
             removeComments: true, //移除HTML中的注释
             collapseWhitespace: false //删除空白符与换行符
@@ -25,8 +25,10 @@ config.pages.forEach((page) => {
     });
 
     HTMLPlugins.push(htmlPlugin);
-    Entries[page] = `./src/com/${page}/${page}.ts`;
+    Entries[page.name] = page.entry;
 });
+
+
 const chunks = Object.keys(Entries);
 module.exports = {
     entry: Entries,
@@ -41,7 +43,7 @@ module.exports = {
             TWEEN: 'tween.js'
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
+            name: config.commonname, // 将公共模块提取，生成名为`vendors`的chunk
             chunks: chunks, //提取哪些模块共有的部分
             minChunks: chunks.length // 提取至少3个模块共有的部分
         }),
