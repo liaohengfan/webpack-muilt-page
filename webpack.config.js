@@ -4,7 +4,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 /*extract-text-webpack-plugin将你的样式提取到单独的css文件里，*/
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
     entry: { //配置入口文件，有几个写几个
         main: './src/com/main.ts',
@@ -29,7 +28,7 @@ module.exports = {
 
         //HtmlWebpackPlugin，模板生成相关的配置，每个对于一个页面的配置，有几个写几个
         new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-            favicon: './src/assets/images/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
+            favicon: './src/images/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
             filename: './main/index.html', //生成的html存放路径，相对于path
             template: './src/htmls/index.html', //html模板路径
             inject: 'body', //js插入的位置，true/'head'/'body'/false
@@ -41,7 +40,7 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-            favicon: './src/assets/images/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
+            favicon: './src/images/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
             filename: './login/index.html', //生成的html存放路径，相对于path
             template: './src/htmls/login.html', //html模板路径
             inject: true, //js插入的位置，true/'head'/'body'/false
@@ -102,4 +101,4 @@ module.exports = {
         port: 8090, //默认8080
         inline: true //可以监控js变化
     }
-}
+};
