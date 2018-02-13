@@ -54,6 +54,10 @@ module.exports = {
                 warnings: false
             }
         }),
+        new CopyWebpackPlugin([{
+            from: __dirname + '/src/assets',
+            to: './assets'
+        }]),
         new webpack.HotModuleReplacementPlugin()
     ],
     resolve: {
