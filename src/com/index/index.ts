@@ -1,5 +1,5 @@
-import '../../styles/common.less';
-import '../../styles/index.less';
+import '../../styles/common.scss';
+import '../../styles/index.scss';
 class Person{
     sayHello():void{
         console.log('Person say hello');

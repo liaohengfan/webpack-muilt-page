@@ -7,7 +7,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments":true,
-    "lib": [ "es2015", "dom" ],
+    "lib": ["es5", "dom", "es2015.promise", "es2015.collection", "es2015.iterable"],
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
     "sourceMap": false

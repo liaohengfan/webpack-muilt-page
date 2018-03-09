@@ -1,5 +1,5 @@
-import '../../styles/common.less';
-import '../../styles/login.less';
+import '../../styles/common.scss';
+import '../../styles/login.scss';
 console.log("Login Page");
 class Login{
     constructor(){
