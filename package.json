@@ -8,11 +8,7 @@
     "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build"
   },
   "dependencies": {
-    "tween.js": "",
-    "d3": "",
     "underscore": "",
-    "@types/tween.js": "",
-    "@types/d3": "",
     "@types/underscore": ""
   },
   "author": "",
