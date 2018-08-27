@@ -44,10 +44,11 @@ class Tools {
     public static createDottOutLine(shape: THREE.Shape, color: number, x: number, y: number, z: number, rx: number, ry: number, rz: number, s: number) {
         shape.autoClose = true;
         let points = shape.createPointsGeometry(200);
-        let line = new THREE.LineSegments(points, new THREE.LineDashedMaterial({
+        let material:any=new THREE.LineDashedMaterial({
             color: 0xffffff,
             dashSize: 1, gapSize: 3
-        }));
+        });
+        let line = new THREE.LineSegments(points, material);
         line.scale.set(s, s, s);
         return line;
     }
