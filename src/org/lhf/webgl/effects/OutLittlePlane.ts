@@ -1,7 +1,7 @@
 import {PerspectiveCamera, Spherical, Vector3} from 'three';
 import {Tween} from '../../swa/tween/Tween';
 import {LHFEventDispatcher} from '../../core/LHFEventDispatcher';
-import {ZYEvent} from '../../../../com/events/ZYEvents';
+import {LHFWebGLEvents} from "../events/LHFWebGLEvents";
 
 /**
  * 小行星视角入场动画
@@ -37,7 +37,7 @@ class OutLittlePlane extends LHFEventDispatcher{
 
     /**     * 小行星视角退出完成     */
     outComplete = () => {
-        this.dispatchEvent({type:ZYEvent.LITTLE_IN_SCENE_END});//小行星入场效果完成
+        this.dispatchEvent({type:LHFWebGLEvents.LITTLE_IN_SCENE_END});//小行星入场效果完成
     };
 
     /**     * 小行星视角退出刷新     */

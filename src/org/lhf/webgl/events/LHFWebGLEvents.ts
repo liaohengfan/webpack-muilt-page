@@ -10,6 +10,11 @@ class LHFWebGLEvents {
 
     static readonly DIRECTION_CHANGE_EVENT: string = "OrientChangeEvent";
 
+    /**     * 小行星入场效果完成     */
+    static readonly LITTLE_IN_SCENE_END:string="LittleInSceneEnd";
+
+
+
 }
 
 export {LHFWebGLEvents};
