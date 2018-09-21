@@ -170,11 +170,11 @@ class Tools{
      * 时间转秒
      * @param time
      */
-    static timeToSec(time):number{
-        let s:string|number = '';
-        let hour:number = time.split(':')[0];
-        let min:number = time.split(':')[1];
-        let sec:number = time.split(':')[2];
+    static timeToSec(time:string):number{
+        let s:any = '';
+        let hour:any = time.split(':')[0];
+        let min:any = time.split(':')[1];
+        let sec:any = time.split(':')[2];
         s = Number(hour*3600) + Number(min*60) + Number(sec);
         return s;
     }
