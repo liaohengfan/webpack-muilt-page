@@ -140,6 +140,45 @@ class Tools{
         return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
     }
 
+    /**
+     * 秒转时间
+     * @param s
+     */
+    static secToTime(s:number):string{
+        let t:number|string="";
+        if(s > -1){
+            let hour:number|string = Math.floor(s/3600);
+            let min:number|string = Math.floor(s/60) % 60;
+            let sec:number|string = s % 60;
+            if(hour<1){
+
+            }else if(hour < 10) {
+                t = '0'+ hour + ":";
+            } else {
+                t = hour + ":";
+            }
+
+            if(min < 10){t += "0";}
+            t += min + ":";
+            if(sec < 10){t += "0";}
+            t += sec.toFixed(0);
+        }
+        return t;
+    }
+
+    /**
+     * 时间转秒
+     * @param time
+     */
+    static timeToSec(time):number{
+        let s:string|number = '';
+        let hour:number = time.split(':')[0];
+        let min:number = time.split(':')[1];
+        let sec:number = time.split(':')[2];
+        s = Number(hour*3600) + Number(min*60) + Number(sec);
+        return s;
+    }
+
 
     /**     * 获取用户设备信息     */
     static detectOS():string{
