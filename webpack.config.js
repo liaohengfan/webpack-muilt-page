@@ -65,10 +65,6 @@ module.exports = {
       /*{ test: /\.ts$/, loader: 'ts-loader' },*/
       {test: /\.ts$/, loader: 'awesome-typescript-loader'},
       {
-        test: /\.html$/,
-        loader: "html-loader?attrs=img:src img:data-src"
-      },
-      {
         test: /\.scss|sass$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
