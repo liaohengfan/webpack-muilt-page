@@ -1,5 +1,5 @@
-import * as THREE from 'three';
 import {OrbitControls} from "../controls/OrbitControls";
+import {PerspectiveCamera, Scene, Vector3, WebGLRenderer} from "three";
 
 class RenderMain {
     static FOV: number = 60;
@@ -10,11 +10,11 @@ class RenderMain {
     static FOV_MAX: number = 80;
 
     //默认摄像头位置
-    static defaultCameraPosition: THREE.Vector3 = new THREE.Vector3(0, 100, 0);
+    static defaultCameraPosition: Vector3 = new Vector3(0, 100, 0);
 
-    renderer: THREE.WebGLRenderer;
-    scene: THREE.Scene = null;
-    camera: THREE.PerspectiveCamera;
+    renderer: WebGLRenderer;
+    scene: Scene = null;
+    camera: PerspectiveCamera;
     V_WIDTH: number = 1280;
     V_HEIGHT: number = 720;
     domContainer: HTMLElement;
@@ -47,16 +47,16 @@ class RenderMain {
     }
 
     init() {
-        //this.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-        this.renderer = new THREE.WebGLRenderer({antialias: true, alpha: false});
-        let webglRender: THREE.WebGLRenderer = (this.renderer as THREE.WebGLRenderer);
+        //this.renderer = new WebGLRenderer({antialias: true, alpha: true});
+        this.renderer = new WebGLRenderer({antialias: true, alpha: false});
+        let webglRender: WebGLRenderer = (this.renderer as WebGLRenderer);
         webglRender.setClearColor(0x666666, 0);
         this.renderer.setPixelRatio(window.devicePixelRatio);
 
         let aspect_: number = this.V_WIDTH / this.V_HEIGHT;
-        this.camera = new THREE.PerspectiveCamera(RenderMain.FOV, aspect_, .1, 20000);
+        this.camera = new PerspectiveCamera(RenderMain.FOV, aspect_, .1, 20000);
         this.camera.position.copy(RenderMain.defaultCameraPosition);
-        let zero: THREE.Vector3 = new THREE.Vector3();
+        let zero: Vector3 = new Vector3();
         this.camera.lookAt(zero);
         this.control = new OrbitControls(this.camera, this.domContainer);
         this.control.update();
@@ -86,4 +86,4 @@ class RenderMain {
     }
 }
 
-export default RenderMain;
+export {RenderMain};

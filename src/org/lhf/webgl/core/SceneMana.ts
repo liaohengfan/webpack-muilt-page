@@ -1,5 +1,5 @@
-import {EventDispatcher} from "three";
-import RenderMain from "./RenderMain";
+import {EventDispatcher, Scene} from "three";
+import {RenderMain} from "./RenderMain";
 /**
  * 场景管理
  */
@@ -16,15 +16,15 @@ class SceneMana extends EventDispatcher{
 
     changeScene(scene:string='main'){
         let getScene:ILHFScene=null;
-        let renderScene:THREE.Scene=null;
+        let renderScene:Scene=null;
         getScene=this.getScene(scene);
         if(!getScene){
             throw new Error("场景("+scene+")创建失败!");
         }
         this.curScene=getScene;
-        renderScene=(getScene as THREE.Scene);
+        renderScene=(getScene as Scene);
         if(!renderScene){
-            throw new Error("场景("+scene+") Base 非 Three.js THREE.Scene base!");
+            throw new Error("场景("+scene+") Base 非 Three.js Scene base!");
         }
         this.renderMain.scene=renderScene;
         this.renderMain.enabled=true;
@@ -50,10 +50,9 @@ class SceneMana extends EventDispatcher{
     }
 }
 
-interface ILHFScene extends THREE.Scene{
+interface ILHFScene extends Scene{
     enabled:boolean;
     update():void;
 }
 
 export {SceneMana,ILHFScene};
-export default SceneMana;
